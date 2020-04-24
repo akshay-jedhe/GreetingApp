@@ -1,0 +1,15 @@
+name: greeting workflow
+on:
+   push:
+      branches:
+      - master
+jobs:
+   greeting_app:
+      name: greeting app
+      runs-on: ubuntu-latest
+      steps:
+      - name: printing greeting message.
+        env:
+           GREETING_MSG: "HELLO WORLD"
+        run: echo $GREETING_MSG
+        shell: bash
