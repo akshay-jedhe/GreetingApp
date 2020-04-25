@@ -1,0 +1,19 @@
+name: greeting compile workflow
+on:
+   push:
+      branches:
+      - master
+jobs:
+   greeting_app:
+      name: greeting app
+      runs-on: ubuntu-latest
+      steps:
+      - name: getting copy of project.
+        uses: actions/checkout@v2
+      - name: setting up java environment.
+        uses: actions/setup-java@v1
+        with:
+           java-version: 1.8
+      - name: compiling project with mvn
+        run: mvn compile
+        shell: bash
