@@ -1,0 +1,35 @@
+name: publishing greeting docker image to docker hub workflow
+on:
+   push:
+      branches:
+      - master
+jobs:
+   greeting_app:
+      name: greeting app
+      env:
+         USERNAME: ${{ secrets.username }} 
+         PASSWORD: ${{ secrets.password }}
+      runs-on: ubuntu-latest
+      steps:
+      - name: getting copy of project.
+        uses: actions/checkout@v2
+      - name: setting up java environment.
+        uses: actions/setup-java@v1
+        with:
+           java-version: 1.8
+      - name: compiling project with mvn.
+        run: mvn compile
+        shell: bash
+      - name: building greeting docker image using mvn.
+        if: success()
+        run: mvn compile jib:dockerBuild
+        shell: bash
+      - name: tagging greeting image.
+        if: success()
+        run: docker tag greeting:latest  $USERNAME/greeting:latest
+      - name: authenticate with docker registry.
+        run: docker login --username="$USERNAME" --password="$PASSWORD"
+        shell: bash
+      - name: publishing greeting image to docker registry.
+        run: docker push $USERNAME/greeting:latest
+        shell: bash
