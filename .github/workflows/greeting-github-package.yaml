@@ -1,0 +1,31 @@
+name: publishing greeting package.
+on:
+   push:
+      branches:
+      - master
+jobs:
+   greeting_app:
+      name: greeting app
+      runs-on: ubuntu-latest
+      steps:
+      - name: getting copy of project.
+        uses: actions/checkout@v2
+      - name: setting up java environment.
+        uses: actions/setup-java@v1
+        with:
+           java-version: 1.8
+           server-id: github
+           settings-path: ${{ github.workspace }}
+      - name: compiling project with mvn
+        run: mvn compile
+        shell: bash
+      - name: packaging project with mvn
+        if: success()
+        run: mvn package
+        shell: bash
+      - name: publishing greeting pakage.
+        if: success()
+        run: mvn deploy s $GITHUB_WORKSPACE/settings.xml
+        shell: bash
+        env:
+           GITHUB_TOKEN: ${{ github.token }}

@@ -1,7 +1,7 @@
 name: publishing greeting docker image to docker hub workflow
 on:
    push:
-      branches:
+      branches-ignore:
       - master
 jobs:
    greeting_app:
