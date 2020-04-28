@@ -25,7 +25,7 @@ jobs:
         shell: bash
       - name: publishing greeting pakage.
         if: success()
-        run: mvn deploy s $GITHUB_WORKSPACE/settings.xml
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
         shell: bash
         env:
            GITHUB_TOKEN: ${{ github.token }}
