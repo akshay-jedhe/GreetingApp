@@ -15,6 +15,13 @@
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
+	<distributionManagement>
+                <repository>
+                        <id>github</id>
+                        <name>akshay-jedhe</name>
+                        <url>https://maven.pkg.github.com/akshay-jedhe/GreetingApp</url>
+                </repository>
+        </distributionManagement>
     <dependencies>
 		<dependency>
             <groupId>org.springframework.boot</groupId>
