@@ -22,3 +22,7 @@ jobs:
       - name: compiling project with mvn
         run: mvn compile
         shell: bash
+      - name: build package
+        if: success()
+        run: mvn package
+        shell: bash
