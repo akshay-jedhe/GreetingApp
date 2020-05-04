@@ -5,23 +5,16 @@
 
     <groupId>org.greeting.app</groupId>
     <artifactId>GreetingApp</artifactId>
-    <version>0.0.1</version>
+   <version>0.0.1-SNAPSHOT</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.12.RELEASE</version>
+        <version>2.0.4.RELEASE</version>
     </parent>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-	<distributionManagement>
-                <repository>
-                        <id>github</id>
-                        <name>akshay-jedhe</name>
-                        <url>https://maven.pkg.github.com/akshay-jedhe/GreetingApp</url>
-                </repository>
-        </distributionManagement>
     <dependencies>
 		<dependency>
             <groupId>org.springframework.boot</groupId>
@@ -35,26 +28,13 @@
 			<artifactId>spring-boot-maven-plugin</artifactId>
 		</plugin>
 		<plugin>
-                	<groupId>com.google.cloud.tools</groupId>
-               	 	<artifactId>jib-maven-plugin</artifactId>
-                	<version>1.7.0</version>
-                	<configuration>
-                        	<from>
-                                	<image>openjdk:8u191-alpine</image>
-                        	</from>
-                        	<to>
-                                	<image>greeting</image>
-                                
-                        	</to>
-                        	<container>
-                                	<ports>
-                                        	<port>80</port>
-                                	</ports>
-                                	<workingDirectory>/app</workingDirectory>
-				
-                        	</container>
-                	</configuration>
-        	</plugin>
+      			<groupId>org.apache.maven.plugins</groupId>
+      			<artifactId>maven-jar-plugin</artifactId>
+      			<version>2.3.1</version>
+      			<configuration>
+        			<outputDirectory>docker</outputDirectory>
+      			</configuration>
+    		</plugin>
 	</plugins>
    </build>
 </project>
