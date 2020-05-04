@@ -38,4 +38,4 @@ jobs:
            name: greeting
       - name: building greeting app container image.
         shell: bash
-        run: docker build --file=./greeting/ -t greeting ./greeting/
+        run: docker build --file=./greeting/Dockerfile  -t greeting ./greeting/
