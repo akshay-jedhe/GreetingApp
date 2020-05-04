@@ -1,0 +1,24 @@
+name: greeting app with caching mechanisms.
+on:
+   push:
+      branches:
+      - master
+jobs:
+   greeting_app:
+      name: greeting app
+      runs-on: ubuntu-latest
+      steps:
+      - name: getting copy of project.
+        uses: actions/checkout@v2
+      - name: setting up java environment.
+        uses: actions/setup-java@v1
+        with:
+           java-version: 1.8
+      - name: caching maven dependencies.
+        uses: actions/cache@v1.1.2
+        with:
+           key: greeting-dependencies.
+           path: ~/.m2
+      - name: compiling project with mvn
+        run: mvn compile
+        shell: bash
