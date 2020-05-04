@@ -24,8 +24,8 @@ jobs:
       - name: upload the greeting artifact.
         uses: actions/upload-artifact@v1
         with:
-           name: GreetingApp
-           path: docker
+           name: greeting-app
+           path: ./docker
    greeting_builder:
       name: greeting app builder
       runs-on: ubuntu-latest
@@ -33,7 +33,7 @@ jobs:
       - name: getting greeting app artifact and Dockerfile
         uses: actions/download-artifact@v1
         with:
-           name: GreetingApp
+           name: greeting-app
       - name: building greeting app container image.
         shell: bash
         run: docker build -t greeting . 
