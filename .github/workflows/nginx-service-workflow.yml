@@ -1,0 +1,19 @@
+name: nginx service workflow
+on:
+   push:
+      branches:
+      - master
+jobs:
+   nginx-service-client:
+      name: nginx service client
+      runs-on: ubuntu-latest
+      steps:
+      - name: connect with nginx-service
+        run: curl http://localhost:80
+        shell: bash
+
+      services:
+         nginx-service:
+            image: nginx
+            ports:
+            - 80:80
