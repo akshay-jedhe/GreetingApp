@@ -1,0 +1,18 @@
+name: custom action client
+on:
+   push:
+      branches:
+      - master
+jobs:
+   custom-action-client:
+      name: custom action client
+      runs-on: ubuntu-latest
+      steps:
+      - name: using isEven action
+        uses: akshay-jedhe/isevenaction
+        id: action-user
+        with:
+           target-number: "2"
+      - name: printing the result of isEven action.
+        shell: bash
+        run: echo ${{ steps.action-user.outputs.result }}
