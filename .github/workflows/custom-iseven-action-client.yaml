@@ -9,7 +9,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: using isEven action
-        uses: akshay-jedhe/isevenaction
+        uses: akshay-jedhe/isevenaction@master
         id: action-user
         with:
            target-number: 2
