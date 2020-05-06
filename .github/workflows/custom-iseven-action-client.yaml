@@ -8,6 +8,9 @@ jobs:
       name: custom action client
       runs-on: ubuntu-latest
       steps:
+      - name: listing directories
+        shell: bash
+        run: ls
       - name: using isEven action
         uses: akshay-jedhe/isevenaction@master
         id: action-user
@@ -16,3 +19,5 @@ jobs:
       - name: printing the result of  custom action.
         shell: bash
         run: echo ${{ steps.action-user.outputs.result }}
+   
+       
