@@ -13,6 +13,6 @@ jobs:
         id: action-user
         with:
            target-number: 2
-      - name: printing the result of isEven custom action.
+      - name: printing the result of  custom action.
         shell: bash
         run: echo ${{ steps.action-user.outputs.result }}
