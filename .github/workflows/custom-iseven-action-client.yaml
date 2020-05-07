@@ -15,7 +15,7 @@ jobs:
         uses: akshay-jedhe/isevenaction@master
         id: action-user
         with:
-           target-number: 2
+           target-number: $GITHUB_WORKSPACE
       - name: printing the result of  custom action.
         shell: bash
         run: echo ${{ steps.action-user.outputs.result }}
