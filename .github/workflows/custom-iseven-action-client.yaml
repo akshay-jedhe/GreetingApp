@@ -11,6 +11,8 @@ jobs:
       - name: listing directories
         shell: bash
         run: pwd
+      - name: getting copy of project.
+        uses: actions/checkout@v2
       - name: using isEven action
         uses: akshay-jedhe/isevenaction@master
         id: action-user
