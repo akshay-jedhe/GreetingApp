@@ -10,7 +10,7 @@ jobs:
       steps:
       - name: listing directories
         shell: bash
-        run: ls
+        run: pwd
       - name: using isEven action
         uses: akshay-jedhe/isevenaction@master
         id: action-user
